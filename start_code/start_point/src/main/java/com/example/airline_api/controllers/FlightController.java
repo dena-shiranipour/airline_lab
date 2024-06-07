@@ -15,36 +15,29 @@ import java.util.Optional;
 public class FlightController {
 
 
-
     @Autowired
     FlightService flightService;
 
 
-
     // done : Display all available flights
     @GetMapping
-    public ResponseEntity<List<Flight>> getAllFlights(){
+    public ResponseEntity<List<Flight>> getAllFlights() {
         return new ResponseEntity<>(flightService.getAllFlights(), HttpStatus.OK);
     }
 
     // done: Display a specific flight
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Flight> getFlightById(@PathVariable long id){
-        Optional< Flight> flight = flightService.getFlightsById(id);
-        if (flight.isEmpty()) {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-        }else{
-   //         return new ResponseEntity<>(flightService.getFlightsById(id).get(), HttpStatus.OK);
-        }
-
+    public ResponseEntity<Flight> getFlightById(@PathVariable long id) {
+        Flight flight = flightService.getFlightsById(id);
+        return new ResponseEntity<>(flight, HttpStatus.OK);
     }
+
 
     //  Add details of a new flight
     @PostMapping
-    public ResponseEntity<Flight> addNewFlight(@RequestBody Flight flight){
-        flightService.saveFlight(flight);
-        return new ResponseEntity<>(flight, HttpStatus. CREATED);
+    public ResponseEntity<Flight> addNewFlight(@RequestBody Flight flight) {
+        Flight saveFlight = flightService.addNewFlight(flight);
+        return new ResponseEntity<>(flight, HttpStatus.CREATED);
     }
-
 
 }

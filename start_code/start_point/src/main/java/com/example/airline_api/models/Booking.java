@@ -24,14 +24,11 @@ public class Booking {
     @JsonIgnoreProperties({"flights"})
     private Passenger passenger;
 
-    @Column (name = "seat number")
+    @Column (name = "seat_number")
     private int seatNumber;
 
-    @Column (name = "meal preference")
+    @Column (name = "meal_preference")
     private String mealPreference;
-
-
-
 
 
     public Booking(Flight flight, Passenger passenger, int seatNumber){

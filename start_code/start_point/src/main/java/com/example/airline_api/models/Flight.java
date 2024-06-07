@@ -21,10 +21,10 @@ public class Flight {
     @Column( name = "capacity")
     private int capacity;
 
-    @Column( name = "departure date")
+    @Column( name = "departure_date")
     private String departureDate;
 
-    @Column( name = "departure time")
+    @Column( name = "departure_time")
     private String departureTime;
 
     @OneToMany(mappedBy = "flight") //mapped by means that on the other side of the relationship is flight

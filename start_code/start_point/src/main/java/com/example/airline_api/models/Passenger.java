@@ -22,14 +22,14 @@ public class Passenger {
     private String email;
 
     @OneToMany(mappedBy = "passenger")
-    @JsonIgnoreProperties({"passenger"})
-    private List<Booking> flights;
+    @JsonIgnoreProperties({"passenger"}) //json ignore so we dont have to keep seeing every booking that every passenger has etc
+    private List<Booking> bookings;
 
 
     public Passenger(String name, String email) {
         this.name = name;
         this.email = email;
-        this.flights = new ArrayList<>();
+        this.bookings = new ArrayList<>();
     }
 
     public Passenger() {
@@ -60,10 +60,10 @@ public class Passenger {
     }
 
     public List<Booking> getFlights() {
-        return flights;
+        return bookings;
     }
 
     public void setFlights(List<Booking> flights) {
-        this.flights = flights;
+        this.bookings = flights;
     }
 }

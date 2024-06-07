@@ -22,22 +22,30 @@ public class PassengerController {
     // Display details of all passengers
     @GetMapping
     public ResponseEntity<List<Passenger>> getAllPassengers(){
-        return new ResponseEntity<>(passengerService.getAllPassengers(), HttpStatus.OK);
+        List<Passenger> allPassengers = passengerService.getAllPassengers();
+        return new ResponseEntity<>(allPassengers, HttpStatus.OK);
     }
 
     //  Display specific passenger details
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Passenger> getPassengerById(@PathVariable long id){
-        Optional<Passenger> passenger = passengerService.getPassengerById(id);
-        if(passenger.isEmpty()){
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-        }return new ResponseEntity<>(passenger.get(),HttpStatus.OK);
+    public ResponseEntity<Passenger> getPassengerById(@PathVariable Long id){
+        Passenger passenger = passengerService.getPassengerById(id);
+        return new ResponseEntity<>(passenger,HttpStatus.OK);
     }
 
     // Add a new passenger
     @PostMapping
     public ResponseEntity<Passenger> addNewPassenger(@RequestBody Passenger passenger){
- //       return null;
+        Passenger newPassenger = passengerService.addNewPassenger(passenger);
+       return new ResponseEntity<>(newPassenger, HttpStatus.CREATED);
     }
 
 }
+
+
+
+
+
+
+
+
