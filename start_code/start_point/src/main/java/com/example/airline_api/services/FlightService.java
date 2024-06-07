@@ -17,8 +17,8 @@ public class FlightService {
     @Autowired
     FlightRepository flightRepository;
 
-//    @Autowired
-//    BookingRepository bookingRepository;
+    @Autowired
+    BookingRepository bookingRepository;
 
 
     public List<Flight> getAllFlights(){
@@ -29,9 +29,9 @@ public class FlightService {
         return flightRepository.findById(id).get();
     }
 
-//    public void saveFlight(Flight flight){
-//        flightRepository.save(flight);
-//    }
+    public void saveFlight(Flight flight){
+        flightRepository.save(flight);
+    }
     public Flight addNewFlight(Flight flight) {
         flightRepository.save(flight);
         return flight;
